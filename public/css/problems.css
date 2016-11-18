@@ -1,0 +1,22 @@
+
+    #navsp {
+        display: inline-block;
+    }
+
+    #ojname {
+        margin-top: 35px;
+        margin-left: 30px;
+        display: inline-block;
+        opacity: 0.5;
+    }
+
+    .title-tags .title {
+        float: left
+    }
+
+    .title-tags .tags {
+        float: right;
+    }
+    a>span.label {
+        white-space: pre-wrap;
+    }

@@ -1,0 +1,55 @@
+#site_footer
+   {
+       position: absolute;
+       bottom: 0;
+       left: 0;
+       right: 0;
+       overflow: hidden;
+       height:74px;
+       /*padding-top: 64px;*/
+       color:#999;
+   }
+   #site_footer .container
+   {
+       padding-bottom: 10px;
+   }
+   #site_footer .container .footer_text {padding-top: 18px;}
+   #site_footer p
+   {
+       margin-top: 10px;
+       margin-bottom: 0px;
+   }
+
+   /*------For PC------*/
+   @media (min-width: 768px)
+   {
+       .onhover-dropdown:hover > ul.dropdown-menu
+       {
+           display:block;
+       }
+       .onhover-dropdown:hover
+       {
+           background-color: #e7e7e7;
+       }
+       #nav_search_area
+       {
+           max-width:192px;
+           transition:max-width 0.3s;
+           width:100%;
+       }
+       #nav_search_area:focus
+       {
+           max-width:512px;
+           transition:max-width 0.3s;
+           width:100%;
+       }
+   }
+   @media (max-width: 768px)
+   {
+       #search_form_xs
+       {
+           padding: 8px;
+           overflow:hidden;
+           padding-left:16px;
+       }
+   }
