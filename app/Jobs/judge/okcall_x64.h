@@ -59,7 +59,7 @@ SysCallLimit CppLimit[] = {
     Allow (SYS_execve) Calls (1),
     Allow (SYS_exit_group) Calls (1),
     Allow (SYS_futex) Calls (INF),
-    Allow (SYS_fstat) Calls (3),
+    Allow (SYS_fstat) Calls (INF),
     Allow (SYS_get_thread_area) Calls (1),
     Allow (SYS_gettid) Calls (1),
     Allow (SYS_mmap) Calls (INF),
@@ -122,11 +122,12 @@ void init_ok_table(int lang)
 {
     int scall, stimes;
     SysCallLimit* table = TableFor[lang];
-    memset(ok_table, 0, sizeof(ok_table));
+    memset(ok_table, -1, sizeof(ok_table));
     for (int i = 0; table[i].CallId != -1; ++i)
     {
         scall = table[i].CallId;
         stimes = table[i].Limit;
+        //printf("%d %d %d\n" , i , scall , stimes);
         ok_table[scall] = stimes;
     }
     //若比赛时出现不应出现的DC，可以临时配置进okcall.cfg中，赛后再修改程序重新编译。

@@ -559,12 +559,12 @@ int main(int argc, char *argv[])
 
                 //设置运行根目录、运行用户
                 //获得运行用户的信息
-                struct passwd *judge = getpwnam(judge_conf::sysuser.c_str());
+                /*struct passwd *judge = getpwnam(judge_conf::sysuser.c_str());
                 if (judge == NULL)
                 {
                     LOG_BUG("no user named %s", judge_conf::sysuser.c_str());
                     exit(judge_conf::EXIT_SET_SECURITY);
-                }
+                }*/
 
                 //切换目录
                 if (EXIT_SUCCESS != chdir(problem::temp_dir.c_str()))
@@ -593,11 +593,11 @@ int main(int argc, char *argv[])
 
                 //#endif
                 //设置有效用户
-                if (EXIT_SUCCESS != setuid(judge->pw_uid))
+                /*if (EXIT_SUCCESS != setuid(judge->pw_uid))
                 {
                     LOG_BUG("setuid failed");
                     exit(judge_conf::EXIT_SET_SECURITY);
-                }
+                }*/
 
 
                 int user_time_limit = problem::time_limit + judge_conf::time_limit_addtion;

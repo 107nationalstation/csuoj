@@ -1,0 +1,17 @@
+WARNING [2016-11-25 04:15:36] [test.cpp:765]--->error for syscall 8
+DEBUG [2016-11-25 04:15:36] [test.cpp:66]--->result: 13, 1116KB -8ms
+WARNING [2016-11-25 04:24:07] [test.cpp:765]--->error for syscall 8
+DEBUG [2016-11-25 04:24:07] [test.cpp:66]--->result: 13, 1116KB -8ms
+WARNING [2016-11-25 04:24:18] [test.cpp:765]--->error for syscall 8
+DEBUG [2016-11-25 04:24:18] [test.cpp:66]--->result: 13, 1116KB -8ms
+WARNING [2016-11-25 04:25:06] [test.cpp:765]--->error for syscall 8
+DEBUG [2016-11-25 04:25:06] [test.cpp:66]--->result: 13, 1116KB -8ms
+WARNING [2016-11-25 04:25:24] [test.cpp:765]--->error for syscall 8
+DEBUG [2016-11-25 04:25:24] [test.cpp:66]--->result: 13, 1116KB -8ms
+WARNING [2016-11-25 04:27:48] [test.cpp:765]--->error for syscall 8
+DEBUG [2016-11-25 04:27:48] [test.cpp:66]--->result: 13, 1116KB -8ms
+WARNING [2016-11-25 04:28:02] [test.cpp:765]--->error for syscall 8
+DEBUG [2016-11-25 04:28:02] [test.cpp:66]--->result: 13, 1116KB -8ms
+WARNING [2016-11-25 04:33:05] [test.cpp:765]--->error for syscall 8
+DEBUG [2016-11-25 04:33:05] [test.cpp:66]--->result: 13, 1116KB -8ms
+DEBUG [2016-11-25 04:35:25] [test.cpp:66]--->result: 3, 1116KB 0ms
