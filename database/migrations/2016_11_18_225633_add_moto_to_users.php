@@ -15,7 +15,7 @@ class AddMotoToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->string('moto');
+            $table->string('moto')->nullable();
         });
     }
 

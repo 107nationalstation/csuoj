@@ -7,6 +7,7 @@ use App\Statu;
 use App\Problem;
 use App\User;
 use App\Problem_User;
+use App\Jobs\judger;
 
 class SubmitController extends Controller
 {
@@ -28,8 +29,6 @@ class SubmitController extends Controller
         $this->validate($request, [
             'code' => 'required', // 必填
         ]);
-        //交给判题的队列
-
 
         $statu = new Statu;
         $statu->problem_id = $request->get('problem_id');
@@ -40,6 +39,7 @@ class SubmitController extends Controller
         $statu->compiler = $request->get('compiler');
         $statu->code_length = strlen($request->get('code'));
         $statu->save();
+        dispatch(new judger($statu->id));
         $solved_problems = User::find($request->get('user_id'))->problems;
         $flag = TRUE;
         foreach($solved_problems as $solved_problem){

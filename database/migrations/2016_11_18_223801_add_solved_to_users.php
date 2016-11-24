@@ -15,7 +15,7 @@ class AddSolvedToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             //
-            $table->integer('solved');
+            $table->integer('solved')->default(0);
         });
     }
 

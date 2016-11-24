@@ -14,8 +14,7 @@ class ProblemSeeder extends Seeder
         //
         //DB::table('problems')->delete();
 
-        //for($i=0;$i<10000;$i++){
-            $i=1000000001;
+        for($i=0;$i<1000;$i++){
             \App\Problem::create([
                 //$table->string('title');
                 'title'        => 'title '.$i,
@@ -42,6 +41,6 @@ class ProblemSeeder extends Seeder
                 'user_id'      => $i,
                 //$table->timestamps();
             ]);
-        //}
+        }
     }
 }
