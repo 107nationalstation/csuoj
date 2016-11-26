@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddColumnCodeToStatus' => $baseDir . '/database/migrations/2016_11_26_201540_add_column_code_to_status.php',
     'AddMotoToUsers' => $baseDir . '/database/migrations/2016_11_18_225633_add_moto_to_users.php',
     'AddSolvedToUsers' => $baseDir . '/database/migrations/2016_11_18_223801_add_solved_to_users.php',
     'AddSubmitSolvedToProblems' => $baseDir . '/database/migrations/2016_11_25_010206_add_submit_solved_to_problems.php',

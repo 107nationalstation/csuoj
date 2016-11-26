@@ -38,7 +38,15 @@ class SubmitController extends Controller
         $statu->running_memory = 0;
         $statu->compiler = $request->get('compiler');
         $statu->code_length = strlen($request->get('code'));
+        $statu->code = $request->get('code');
         $statu->save();
+
+        $id = $statu->problem_id + 1000;
+        if(!file_exists("./users/{$statu->user_name}/{$id}")) mkdir("./users/{$statu->user_name}/{$id}");
+        $file = "./users/{$statu->user_name}/$id/Main.cpp";
+        file_put_contents($file , $statu->code);
+
+
         dispatch(new judger($statu->id));
         $solved_problems = User::find($request->get('user_id'))->problems;
         $flag = TRUE;

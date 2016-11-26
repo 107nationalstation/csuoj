@@ -32,7 +32,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <bold><font color="#1b649b" size="6" style="font-style:oblique;"><img src="/img/index.png" height="80">中南大学ACM/ICPC在线评测系统</font></bold>
+                        <bold><font color="#1b649b" size="8" style="font-style:oblique;"><img src="/img/index.png" height="80">中南大学ACM/ICPC在线评测系统</font></bold>
                     </a>
                 </div>
 
