@@ -7,11 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AddColumnCodeToStatus' => $baseDir . '/database/migrations/2016_11_26_201540_add_column_code_to_status.php',
+    'AddColumnUserIdToStatus' => $baseDir . '/database/migrations/2016_11_28_012002_add_column_user_id_to_status.php',
     'AddMotoToUsers' => $baseDir . '/database/migrations/2016_11_18_225633_add_moto_to_users.php',
     'AddSolvedToUsers' => $baseDir . '/database/migrations/2016_11_18_223801_add_solved_to_users.php',
     'AddSubmitSolvedToProblems' => $baseDir . '/database/migrations/2016_11_25_010206_add_submit_solved_to_problems.php',
     'ArticleSeeder' => $baseDir . '/database/seeds/ArticleSeeder.php',
     'CreateArticleTable' => $baseDir . '/database/migrations/2016_11_07_023049_create_article_table.php',
+    'CreateFailedJobsTable' => $baseDir . '/database/migrations/2016_11_28_015351_create_failed_jobs_table.php',
     'CreateJobsTable' => $baseDir . '/database/migrations/2016_11_24_165358_create_jobs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateProblemTable' => $baseDir . '/database/migrations/2016_11_06_133253_create_problem_table.php',

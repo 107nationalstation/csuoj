@@ -32,6 +32,7 @@ class SubmitController extends Controller
 
         $statu = new Statu;
         $statu->problem_id = $request->get('problem_id');
+        $statu->user_id = $request->get('user_id');
         $statu->user_name = $request->get('user_name');
         $statu->statue = 'waiting';
         $statu->running_time = 0;
@@ -41,6 +42,10 @@ class SubmitController extends Controller
         $statu->code = $request->get('code');
         $statu->save();
 
+        //$user = User::find($statu->user_id);
+        //echo $user->name;
+        //exit();
+
         $id = $statu->problem_id + 1000;
         if(!file_exists("./users/{$statu->user_name}/{$id}")) mkdir("./users/{$statu->user_name}/{$id}");
         $file = "./users/{$statu->user_name}/$id/Main.cpp";
@@ -48,18 +53,6 @@ class SubmitController extends Controller
 
 
         dispatch(new judger($statu->id));
-        $solved_problems = User::find($request->get('user_id'))->problems;
-        $flag = TRUE;
-        foreach($solved_problems as $solved_problem){
-            if($solved_problem->id == $request->get('problem_id'))
-                $flag = FALSE;
-        }
-        if($flag){
-            $problem_user = new Problem_User;
-            $problem_user->problem_id = $request->get('problem_id');
-            $problem_user->user_id = $request->get('user_id');
-            $problem_user->save();
-        }
 
         $problem = Problem::find($request->get('problem_id'));
         $problem->submit = $problem->submit + 1;

@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $user = \App\User::find(1);
+        echo $user->name;
+        exit();
         $articles = \App\Article::latest('id')->paginate(5);
         return view('home',compact('articles'));
     }

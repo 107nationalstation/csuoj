@@ -25,17 +25,26 @@ Route::get('now', function () {
     return date("Y-m-d H:i:s");
 });
 
+//blog
 Route::get('/articles','ArticlesController@index');
 Route::get('/articles/{id}','ArticlesController@show');
 
+//problem
 Route::get('/problems','ProblemsContreller@index');
 Route::get('/problems/{id}','ProblemsContreller@show');
+
+//statu
+Route::get('/status','StatusController@index');
+Route::get('/status/{id}' , 'StatusController@show_code');
+
+//submit
+Route::post('/submit','SubmitController@submit');
 Route::get('/problems/{id}/submit','SubmitController@submit_page');
 
-Route::get('/status','StatusController@index');
-Route::post('/submit','SubmitController@submit');
-
+//rank
 Route::get('/rank','RankController@index');
+
+
 
 Route::get('/testPost',function(){
     $csrf_token = csrf_token();

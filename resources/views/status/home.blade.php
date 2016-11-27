@@ -79,13 +79,13 @@
 
                             @foreach ($status as $statu)
                                 <tr>
-                                    <td><a href="/Result/Local/148267/">{{$statu->id}}</a></td>
-                                    <td><a href="/Problem/Local/1000/">{{$statu->problem_id+1000}}</a></td>
-                                    <td><a href="/UserPage/Jackie/">{{$statu->user_name}}</a></td>
-                                    <td class="result" result="result_wa">{{$statu->statue}}</td>
+                                    <td>{{$statu->id}}</td>
+                                    <td><a href="{{ url('problems/'.($statu->problem_id+1000)) }}">{{$statu->problem_id+1000}}</a></td>
+                                    <td><a href="#">{{$statu->user_name}}</a></td>
+                                    <td>{{$statu->statue}}</td>
                                     <td>{{$statu->running_time}} MS</td>
                                     <td>{{$statu->running_memory}} K</td>
-                                    <td><a href="/Result/Local/148267/">{{$statu->compiler}}</a></td>
+                                    <td><a href="{{ url('status/'.($statu->id)) }}">{{$statu->compiler}}</a></td>
                                     <td>{{$statu->code_length}} B</td>
                                     <td>{{$statu->created_at}}</td>
                                 </tr>
