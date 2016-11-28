@@ -31,14 +31,14 @@
 
                 <h2>Input</h2>
 
-                <div class="desc_text" id="inputdescription_text">{{$problem->input}}</div>
+                <div class="desc_text" id="inputdescription_text">{!! $problem->input !!}</div>
             </div>
             <div id="problem_output">
                 <a class="target-fix" id="output"></a>
 
                 <h2>Output</h2>
 
-                <div class="desc_text" id="outputdescription_text">{{$problem->output}}</div>
+                <div class="desc_text" id="outputdescription_text">{!! $problem->output !!}</div>
             </div>
             <div id="problem_sampleinput">
                 <a class="target-fix" id="sampleinput"></a>
@@ -59,7 +59,7 @@
 
                 <h2>Hint</h2>
 
-                <div class="desc_text" id="hint_text"><p>{{$problem->hint}}</p></div>
+                <div class="desc_text" id="hint_text"><p>{!! $problem->hint !!}</p></div>
             </div>
 
             <div id="problem_source">

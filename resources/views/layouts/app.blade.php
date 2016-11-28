@@ -136,7 +136,7 @@
                     <!--<div class="pull-right text-right">-->
                         <small class="pull-right">中南大学开放式在线评测系统</small>
                         <br>
-                        <p><small class="pull-right">©版权所有 2016-<?php echo date("Y")?>，CSU_ACM TEAM，保留一切权利</small></p>
+                        <p><small class="pull-right">©版权所有 2016-<?php echo date("Y")?>，<a href="mailto:yy.studioflaming@gmail.com">CSU_ACM TEAM</a>，保留一切权利</small></p>
                 </div>
                 <!--</div>-->
 

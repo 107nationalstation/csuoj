@@ -1,4 +1,0 @@
-Main.cpp: In function ‘int main()’:
-Main.cpp:4:9: warning: unused variable ‘x’ [-Wunused-variable]
-     int x[100000];
-         ^

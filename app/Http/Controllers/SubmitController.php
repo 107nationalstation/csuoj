@@ -48,7 +48,9 @@ class SubmitController extends Controller
 
         $id = $statu->problem_id + 1000;
         if(!file_exists("./users/{$statu->user_name}/{$id}")) mkdir("./users/{$statu->user_name}/{$id}");
-        $file = "./users/{$statu->user_name}/$id/Main.cpp";
+        if($statu->compiler == "GPP") $file = "./users/{$statu->user_name}/$id/Main.cpp";
+        if($statu->compiler == "GCC") $file = "./users/{$statu->user_name}/$id/Main.c";
+        if($statu->compiler == "Java") $file = "./users/{$statu->user_name}/$id/Main.java";
         file_put_contents($file , $statu->code);
 
 

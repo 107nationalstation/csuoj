@@ -63,7 +63,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         //../../../Jobs/users/{$data['name']}
-        mkdir("./users/{$data['name']}");
+        if(!file_exists("./users/{$data['name']}")) mkdir("./users/{$data['name']}");
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

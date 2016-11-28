@@ -40,11 +40,19 @@ class judger implements ShouldQueue
         //
         $statu = Statu::find($this->id);
         $problem = Problem::find($statu->problem_id);
-        //file_put_contents("test" , $statu->id);
-        $user = User::find(6);
+        $user = User::find($statu->user_id);
         $id = $statu->problem_id + 1000;
-        $res=exec("./public/Judge/judge -l 2 -D ./public/Data/{$id} -d ./public/users/{$statu->user_name}/{$id} -t 1 -m 65536 -o 8192");
-        //file_put_contents("test" , $res);
+        $lang = 0;
+        if($statu->compiler == "GPP") $lang = 2;
+        if($statu->compiler == "GCC") $lang = 1;
+        if($statu->compiler == "Java") $lang = 3;
+        if($problem->spj == 1)
+            $res=exec("./public/Judge/judge -l {$lang} -D ./public/Data/{$id} -d ./public/users/{$statu->user_name}/{$id} -t 1000 -m 65535 -o 8192 -S dd");
+        else
+            $res=exec("./public/Judge/judge -l {$lang} -D ./public/Data/{$id} -d ./public/users/{$statu->user_name}/{$id} -t 1000 -m 65535 -o 8192");
+
+        //$res=exec("./public/Judge/judge -l {$lang} -D ./public/Data/{$id} -d ./public/users/{$statu->user_name}/{$id} -t {$problem->time_limit} -m {$problem->memory_limit} -o 8192");
+        //file_put_contents("test" , "./public/Judge/judge -l { $lang } -D ./public/Data/{$id} -d ./public/users/{ $statu->user_name } / { $id } -t { $problem->time_limit } -m { $problem->memory_limit } -o 8192");
         $result = '';
         $memory_usage = '';
         $time_usage = '';
@@ -69,6 +77,8 @@ class judger implements ShouldQueue
                 $time_usage = $time_usage.$res[$i];
             else
                 break;
+
+
         if($result == 2) $statu->statue = 'Accepted';
         if($result == 3) $statu->statue = 'Presentation Error';
         if($result == 4) $statu->statue = 'Time Limit Exceeded';
@@ -79,12 +89,15 @@ class judger implements ShouldQueue
         if($result == 9) $statu->statue = 'System Error';
 
         if($result == 2){
+
             $solved_problems = $user->problems;
+
             $flag = TRUE;
             foreach($solved_problems as $solved_problem){
                 if($solved_problem->id == $statu->problem_id)
                     $flag = FALSE;
             }
+
             if($flag){
                 $problem_user = new Problem_User;
                 $problem_user->problem_id = $statu->problem_id;
@@ -98,6 +111,7 @@ class judger implements ShouldQueue
             $problem->save();
 
         }
+
         $statu->running_memory = $memory_usage;
         $statu->running_time = $time_usage;
         $statu->save();

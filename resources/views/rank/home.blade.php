@@ -24,7 +24,7 @@
                                 <tr>
                                     <td><a href="#">{{$user->id}}</a></td>
                                     <td><a href="#">{{$user->name}}</a></td>
-                                    <td><a href="#">{{$user->email}}</a></td>
+                                    <td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
                                     <td><a href="#">{{$user->moto}}</a></td>
                                     <td><a href="#">{{$user->solved}}</a></td>
 

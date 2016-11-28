@@ -15,11 +15,12 @@
 //    return view('welcome');
 //});
 
+//main page
+Route::get('/', 'HomeController@index');
 Route::get('home', 'HomeController@index');
 
 Auth::routes();
-
-Route::get('/', 'HomeController@index');
+Route::get('/admin' , 'Auth.LoginController@admin');
 
 Route::get('now', function () {
     return date("Y-m-d H:i:s");
