@@ -79,6 +79,7 @@ class ContestsController extends Controller
         ]);
 
         $statu = new Cstatu;
+        $user = User::find($request->get('user_id'));
         $statu->contest_id = $request->get('contest_id');
         $statu->problem_id = $request->get('problem_id');
         $statu->problem_tag = $request->get('problem_tag');
@@ -92,10 +93,10 @@ class ContestsController extends Controller
         $statu->code = $request->get('code');
         $statu->save();
         $id = $statu->problem_id + 1000;
-        if(!file_exists("./users/{$statu->user_name}/{$id}")) mkdir("./users/{$statu->user_name}/{$id}");
-        if($statu->compiler == "GPP") $file = "./users/{$statu->user_name}/$id/Main.cpp";
-        if($statu->compiler == "GCC") $file = "./users/{$statu->user_name}/$id/Main.c";
-        if($statu->compiler == "Java") $file = "./users/{$statu->user_name}/$id/Main.java";
+        if(!file_exists("./users/{$user->email}/{$id}")) mkdir("./users/{$user->email}/{$id}");
+        if($statu->compiler == "GPP") $file = "./users/{$user->email}/$id/Main.cpp";
+        if($statu->compiler == "GCC") $file = "./users/{$user->email}/$id/Main.c";
+        if($statu->compiler == "Java") $file = "./users/{$user->email}/$id/Main.java";
         file_put_contents($file , $statu->code);
 
         dispatch(new cjudger($statu->id));
@@ -188,7 +189,7 @@ class ContestsController extends Controller
                     $penalty[$users[$j + 1]] = $penalty[$users[$j]];
                     $penalty[$users[$j]] = $tmp;
                 }
-                else if($user_ac[$j] == $user_ac[$j + 1] && $penalty[$users[$j]] < $penalty[$users[$j + 1]]){
+                else if($user_ac[$j] == $user_ac[$j + 1] && $penalty[$users[$j]] > $penalty[$users[$j + 1]]){
                     $tmp = $user_ac[$j + 1];
                     $user_ac[$j + 1] = $user_ac[$j];
                     $user_ac[$j] = $tmp;
