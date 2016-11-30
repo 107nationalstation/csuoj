@@ -19,6 +19,9 @@
 
                 <p>Memory Limit: <span id="memorylimit_text">{{$problem->memory_limit}} ms</span></p>
 
+                @if ($problem->spj == 1)
+                    <p><font color = "red">special judge</font></p>
+                @endif
             </div>
             <div id="problem_description">
                 <a class="target-fix" id="description"></a>

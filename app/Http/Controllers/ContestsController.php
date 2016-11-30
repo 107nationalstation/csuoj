@@ -105,7 +105,7 @@ class ContestsController extends Controller
 
     public function status($id){
         $contest = Contest::find($id);
-        $status = Cstatu::where('contest_id' , '=' , $id)->get();
+        $status = Cstatu::where('contest_id' , '=' , $id)->paginate(100);
         return view('contests.status' , compact('status' , 'id' , 'contest'));
     }
 
