@@ -53,3 +53,23 @@
            padding-left:16px;
        }
    }
+
+
+
+html,
+body{
+    height: 100%;
+    margin:0;
+    padding:0;
+}
+#container {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -60px;/*margin-bottom的负值等于footer高度*/
+}
+.push,
+#footer {
+    height: 600px;
+    clear:both;
+}

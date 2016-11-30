@@ -29,6 +29,7 @@ class SubmitController extends Controller
         $this->validate($request, [
             'code' => 'required', // 必填
         ]);
+        $user = User::find($request->get('user_id'));
 
         $statu = new Statu;
         $statu->problem_id = $request->get('problem_id');
@@ -47,10 +48,10 @@ class SubmitController extends Controller
         //exit();
 
         $id = $statu->problem_id + 1000;
-        if(!file_exists("./users/{$statu->user_name}/{$id}")) mkdir("./users/{$statu->user_name}/{$id}");
-        if($statu->compiler == "GPP") $file = "./users/{$statu->user_name}/$id/Main.cpp";
-        if($statu->compiler == "GCC") $file = "./users/{$statu->user_name}/$id/Main.c";
-        if($statu->compiler == "Java") $file = "./users/{$statu->user_name}/$id/Main.java";
+        if(!file_exists("./users/{$user->email}/{$id}")) mkdir("./users/{$user->email}/{$id}");
+        if($statu->compiler == "GPP") $file = "./users/{$user->email}/$id/Main.cpp";
+        if($statu->compiler == "GCC") $file = "./users/{$user->email}/$id/Main.c";
+        if($statu->compiler == "Java") $file = "./users/{$user->email}/$id/Main.java";
         file_put_contents($file , $statu->code);
 
 

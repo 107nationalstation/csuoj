@@ -1,5 +1,5 @@
 <!-- Styles -->
-<link href="/css/common.css" rel="stylesheet">
+
 
 @extends('layouts.app')
 
@@ -9,7 +9,7 @@
             {{$status->links()}}
                 <form  class="" id="status_filter" method="GET" action="/Status/Local/">
                     <table class="table table-striped  table-responsive">
-                    <thead>
+                    <!--thead>
                         <th style="width:7%">
                             <input class="form-control" type='text' name='id' placeholder="ID"/>
                         </th>
@@ -57,7 +57,7 @@
                             <button class="btn btn-primary btn-block" type='submit' />筛选</button>
                         </th>
                         <th class="hidden-xs" style="width:17%"></th>
-                    </thead>
+                    </thead-->
                     </table>
                 </form>
                 <table class="table table-striped table-hover table-condensed table-responsive">

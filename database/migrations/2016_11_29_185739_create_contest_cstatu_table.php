@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContestsTable extends Migration
+class CreateContestCstatuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,13 +14,11 @@ class CreateContestsTable extends Migration
     public function up()
     {
         //
-        Schema::create('contests', function(Blueprint $table)
+        Schema::create('contest_cstatu', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->string('title');
-            $table->timestamp('start_time')->useCurrent();
-            $table->timestamp('end_time')->useCurrent();
-            $table->string('contest_type');
+            $table->integer('contest_id');
+            $table->integer('cstatu_id');
             $table->timestamps();
         });
     }

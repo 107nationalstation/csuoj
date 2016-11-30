@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -114,7 +115,7 @@
 
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/contests') }}">
                         <h2>Contest<h2>
                     </a>
                 </div>
@@ -122,13 +123,14 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div id="container">
+            @yield('content')
+            <div class="push"></div>
+        </div>
 
 
 
-
-        <!--div id="site_footer"-->
-            <div class="container">
+            <div class="footer">
 
                 <!--img class="pull-right" width="64px" height="64px" src="/static/images/ICPC-Logo-Fishead.png"-->
                 <div >
@@ -136,14 +138,16 @@
                     <!--<div class="pull-right text-right">-->
                         <small class="pull-right">中南大学开放式在线评测系统</small>
                         <br>
-                        <p><small class="pull-right">©版权所有 2016-<?php echo date("Y")?>，<a href="mailto:yy.studioflaming@gmail.com">CSU_ACM TEAM</a>，保留一切权利</small></p>
+                        <p><small class="pull-right"> ©版权所有 2016-<?php echo date("Y")?>，<a href="mailto:yy.studioflaming@gmail.com">CSU_ACM TEAM</a>，保留一切权利 </small> </p>
+                        
                 </div>
-                <!--</div>-->
 
             </div>
+
+
         </div>
 
-    <!--/div-->
+    </div>
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>

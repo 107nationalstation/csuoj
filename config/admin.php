@@ -5,7 +5,7 @@ return [
     /*
      * Laravel-admin name.
      */
-    'name'  => 'Laravel-admin',
+    'name'  => 'csuoj-admin',
 
     /*
      * Laravel-admin url prefix.

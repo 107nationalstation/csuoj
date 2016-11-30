@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Problem;
+use App\Article;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class ProblemController extends Controller
+class ArticleController extends Controller
 {
     use ModelForm;
 
@@ -39,7 +39,6 @@ class ProblemController extends Controller
      */
     public function edit($id)
     {
-        $id -= 1000;
         return Admin::content(function (Content $content) use ($id) {
 
             $content->header('header');
@@ -72,11 +71,9 @@ class ProblemController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(Problem::class, function (Grid $grid) {
-            $grid->id()->value(function($id){
-                $ret = $id + 1000;
-                return $ret;
-            });
+        return Admin::grid(Article::class, function (Grid $grid) {
+
+            $grid->id('ID')->sortable();
             $grid->title();
             $grid->user_id('Uploader_id');
             $grid->created_at();
@@ -91,19 +88,10 @@ class ProblemController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Problem::class, function (Form $form) {
+        return Admin::form(Article::class, function (Form $form) {
+
             $form->text('title', 'title');
-            $form->number('time_limit', 'time_limit');
-            $form->number('memory_limit', 'memory_limit');
-            $form->editor('description', 'description');
-            $form->editor('input', 'input');
-            $form->editor('output', 'output');
-            $form->textarea('sample_input', 'sample_input');
-            $form->textarea('sample_output', 'sample_output');
-            $form->radio('spj', 'spj')->values([1 => 'yes', 0 => 'no'])->default('no');
-            $form->editor('hint', 'hint');
-            $form->text('source', 'source');
-            //$form->file('source');
+            $form->editor('body', 'body');
             $form->number('user_id', 'uploader_id');
         });
     }

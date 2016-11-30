@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Statu;
+use App\Cstatu;
 use App\Problem;
 use App\User;
 use App\Problem_User;
@@ -12,7 +13,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class judger implements ShouldQueue
+class cjudger implements ShouldQueue
 {
     use InteractsWithQueue, Queueable, SerializesModels;
 
@@ -38,7 +39,7 @@ class judger implements ShouldQueue
     public function handle()
     {
         //
-        $statu = Statu::find($this->id);
+        $statu = Cstatu::find($this->id);
         $problem = Problem::find($statu->problem_id);
         $user = User::find($statu->user_id);
         $id = $statu->problem_id + 1000;
@@ -51,8 +52,7 @@ class judger implements ShouldQueue
         else
             $res=exec("./public/Judge/judge -l {$lang} -D ./public/Data/{$id} -d ./public/users/{$user->email}/{$id} -t {$problem->time_limit} -m {$problem->memory_limit} -o 8192");
 
-        //$res=exec("./public/Judge/judge -l {$lang} -D ./public/Data/{$id} -d ./public/users/{$user->email}/{$id} -t {$problem->time_limit} -m {$problem->memory_limit} -o 8192");
-        //file_put_contents("test" , "./public/Judge/judge -l { $lang } -D ./public/Data/{$id} -d ./public/users/{ $user->email } / { $id } -t { $problem->time_limit } -m { $problem->memory_limit } -o 8192");
+        //file_put_contents("test" , "./public/Judge/judge -l {$lang} -D ./public/Data/{$id} -d ./public/users/{$user->email}/{$id} -t 1000 -m 65535 -o 8192");
         $result = '';
         $memory_usage = '';
         $time_usage = '';
@@ -89,27 +89,7 @@ class judger implements ShouldQueue
         if($result == 9) $statu->statue = 'System Error';
 
         if($result == 2){
-
-            $solved_problems = $user->problems;
-
-            $flag = TRUE;
-            foreach($solved_problems as $solved_problem){
-                if($solved_problem->id == $statu->problem_id)
-                    $flag = FALSE;
-            }
-
-            if($flag){
-                $problem_user = new Problem_User;
-                $problem_user->problem_id = $statu->problem_id;
-                $problem_user->user_id = $user->id;
-                $problem_user->save();
-                $user->solved ++;
-                $user->save();
-            }
-
-            $problem->accepted ++;
-            $problem->save();
-
+            
         }
 
         $statu->running_memory = $memory_usage;

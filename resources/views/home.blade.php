@@ -2,21 +2,20 @@
 
 @section('content')
     <div id="content">
-        <ul>
+        <ol>
             {{$articles->links()}}
             @foreach ($articles as $article)
             <li style="margin: 50px 0;">
                 <div class="title">
                     <a href="{{ url('articles/'.$article->id) }}">
-                        <h4>{{ $article->title }}</h4>
+                        <h2>{{ $article->title }}</h2>
                     </a>
                 </div>
                 <div class="body">
-                    <p>{{ $article->body }}</p>
+                    <h4><p>{!! $article->body !!}</p><h4>
                 </div>
             </li>
             @endforeach
-            {{$articles->links()}}
-        </ul>
+        </ol>
     </div>
 @endsection

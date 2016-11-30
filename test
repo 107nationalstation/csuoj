@@ -1,0 +1,1 @@
+./public/Judge/judge -l 2 -D ./public/Data/1001 -d ./public/users/test`/1001 -t 1000 -m 65535 -o 8192
