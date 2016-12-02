@@ -11,8 +11,14 @@ use App\Problem_User;
 class StatusController extends Controller
 {
     //
-    public function index(){
-        $status = Statu::latest('id')->paginate(100);
+    public function index(Request $request){
+    	$quest = array();
+    	if($request->get('id') != '') $quest['id'] = $request->get('id');
+    	if($request->get('problem_id') != '') $quest['problem_id'] = $request->get('problem_id');
+    	if($request->get('user_name') != '') $quest['user_name'] = $request->get('user_name');
+    	if($request->get('statue') != '') $quest['statue'] = $request->get('statue');
+    	if($request->get('compiler') != '') $quest['compiler'] = $request->get('compiler');
+        $status = Statu::where($quest)->latest('id')->paginate(100);
         return view('status.home',compact('status'));
     }
 

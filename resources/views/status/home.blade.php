@@ -7,20 +7,20 @@
     <div id="content">
         <ul>
             {{$status->links()}}
-                <form  class="" id="status_filter" method="GET" action="/Status/Local/">
+                <form  class="" id="status_filter" method="GET" action="{{ url("/status") }}">
                     <table class="table table-striped  table-responsive">
-                    <!--thead>
+                    <thead>
                         <th style="width:7%">
                             <input class="form-control" type='text' name='id' placeholder="ID"/>
                         </th>
                         <th style="width:6%">
-                            <input class="form-control" type='text' name='label' placeholder="题号"/>
+                            <input class="form-control" type='text' name='problem_id' placeholder="题号"/>
                         </th>
                         <th style="width:10%">
-                            <input class="form-control" type='text' name='user' placeholder="用户名"/>
+                            <input class="form-control" type='text' name='user_name' placeholder="用户名"/>
                         </th>
                         <th style="width:14%">
-                            <select class="form-control" name='status'>
+                            <select class="form-control" name='statue'>
                             <option value='' selected>All</option>
                             <option value='Accepted'>Accepted</option>
                             <option value='Wrong Answer'>Wrong Answer</option>
@@ -57,7 +57,7 @@
                             <button class="btn btn-primary btn-block" type='submit' />筛选</button>
                         </th>
                         <th class="hidden-xs" style="width:17%"></th>
-                    </thead-->
+                    </thead>
                     </table>
                 </form>
                 <table class="table table-striped table-hover table-condensed table-responsive">

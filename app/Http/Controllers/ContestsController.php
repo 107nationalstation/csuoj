@@ -24,8 +24,15 @@ class ContestsController extends Controller
         return view('contests.home',compact('contests'));
     }
 
-    public function show($id){
+    public function show($id , Request $request){
     	$contest = Contest::find($id);
+        if($contest->contest_type == 'private'){
+            $warning = '';
+            if($request['password'] != $contest->password){
+                $warning = 'wrong password';
+                return view('contests.password' , compact('warning' , $id));
+            }
+        }
     	$problems = $contest->problems;
         $submit = Array(0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0);
         $accepted = Array(0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0 , 0);
@@ -104,9 +111,14 @@ class ContestsController extends Controller
         return redirect('contests/'.$statu->contest_id.'/status/now');
     }
 
-    public function status($id){
+    public function status($id , Request $request){
         $contest = Contest::find($id);
-        $status = Cstatu::where('contest_id' , '=' , $id)->paginate(100);
+        $quest = array();
+        if($request->get('problem_id') != '') $quest['problem_tag'] = $request->get('problem_id');
+        if($request->get('user_name') != '') $quest['user_name'] = $request->get('user_name');
+        if($request->get('statue') != '') $quest['statue'] = $request->get('statue');
+        if($request->get('compiler') != '') $quest['compiler'] = $request->get('compiler');
+        $status = CStatu::where($quest)->latest('id')->paginate(100);
         return view('contests.status' , compact('status' , 'id' , 'contest'));
     }
 
