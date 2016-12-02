@@ -15,7 +15,7 @@
 
         <input class="form-control submit-setting" type="text" placeholder="{{ (($problem->id+1000)) }}" readonly>
         <form method="post" action="{{ url('submit') }}">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            {{ csrf_field() }}
             <input type="hidden" name="problem_id" value="{{ $problem->id }}">
             @if (!Auth::guest())
                 <input type="hidden" name="user_id" value="{{ Auth::id() }}">

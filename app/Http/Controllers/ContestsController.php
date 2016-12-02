@@ -28,9 +28,13 @@ class ContestsController extends Controller
     	$contest = Contest::find($id);
         if($contest->contest_type == 'private'){
             $warning = '';
-            if($request['password'] != $contest->password){
-                $warning = 'wrong password';
-                return view('contests.password' , compact('warning' , $id));
+            $password = session('password');
+            if($contest->password != $password){
+                if($contest->password != $request['password']){
+                    if($request['password'] != '') $warning = 'wrong password';
+                    return view('contests.password' , compact('warning' , 'id' , 'contest'));
+                }
+                session(['password' => $request['password']]);
             }
         }
     	$problems = $contest->problems;
@@ -49,8 +53,19 @@ class ContestsController extends Controller
     	return view('contests.show' , compact('contest' , 'problems' , 'submit' , 'accepted' , 'id'));
     }
 
-    public function show_problem($id , $problem_tag){
+    public function show_problem($id , $problem_tag , Request $request){
         $contest = Contest::find($id);
+        if($contest->contest_type == 'private'){
+            $warning = '';
+            $password = session('password');
+            if($contest->password != $password){
+                if($contest->password != $request['password']){
+                    if($request['password'] != '') $warning = 'wrong password';
+                    return view('contests.password' , compact('warning' , 'id' , 'contest'));
+                }
+                session(['password' => $request['password']]);
+            }
+        }
         $problems = $contest->problems;
         $problem = new Problem;
         $index = 65;
@@ -64,8 +79,19 @@ class ContestsController extends Controller
         return view('contests.show_problem' , compact('problem' , 'contest' , 'problem_tag'));
     }
 
-    public function submit_page($id , $problem_tag){
+    public function submit_page($id , $problem_tag , Request $request){
         $contest = Contest::find($id);
+        if($contest->contest_type == 'private'){
+            $warning = '';
+            $password = session('password');
+            if($contest->password != $password){
+                if($contest->password != $request['password']){
+                    if($request['password'] != '') $warning = 'wrong password';
+                    return view('contests.password' , compact('warning' , 'id' , 'contest'));
+                }
+                session(['password' => $request['password']]);
+            }
+        }
         $problems = $contest->problems;
         $problem = new Problem;
         $index = 65;
@@ -113,7 +139,19 @@ class ContestsController extends Controller
 
     public function status($id , Request $request){
         $contest = Contest::find($id);
+        if($contest->contest_type == 'private'){
+            $warning = '';
+            $password = session('password');
+            if($contest->password != $password){
+                if($contest->password != $request['password']){
+                    if($request['password'] != '') $warning = 'wrong password';
+                    return view('contests.password' , compact('warning' , 'id' , 'contest'));
+                }
+                session(['password' => $request['password']]);
+            }
+        }
         $quest = array();
+        $quest['contest_id'] = $id;
         if($request->get('problem_id') != '') $quest['problem_tag'] = $request->get('problem_id');
         if($request->get('user_name') != '') $quest['user_name'] = $request->get('user_name');
         if($request->get('statue') != '') $quest['statue'] = $request->get('statue');
@@ -124,6 +162,17 @@ class ContestsController extends Controller
 
     public function rank($id){
         $contest = Contest::find($id);
+        if($contest->contest_type == 'private'){
+            $warning = '';
+            $password = session('password');
+            if($contest->password != $password){
+                if($contest->password != $request['password']){
+                    if($request['password'] != '') $warning = 'wrong password';
+                    return view('contests.password' , compact('warning' , 'id' , 'contest'));
+                }
+                session(['password' => $request['password']]);
+            }
+        }
         $status = Cstatu::where('contest_id' , '=' , $id)->get();
         $users = array();
         $index_user = 0;

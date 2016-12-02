@@ -48,11 +48,16 @@ Route::get('/rank','RankController@index');
 //Contest
 Route::get('/contests' , 'ContestsController@index');
 Route::get('/contests/{id}' , 'ContestsController@show');
+Route::post('/contests/{id}' , 'ContestsController@show');
 Route::get('/contests/{id}/{problem_tag}' , 'ContestsController@show_problem');
+Route::post('/contests/{id}/{problem_tag}' , 'ContestsController@show_problem');
 Route::get('/contests/{id}/{problem_tag}/submit' , 'ContestsController@submit_page');
+Route::post('/contests/{id}/{problem_tag}/submit' , 'ContestsController@submit_page');
 Route::post('/contests/submit','ContestsController@submit');
 Route::get('/contests/{id}/status/now' , 'ContestsController@status');
+Route::post('/contests/{id}/status/now' , 'ContestsController@status');
 Route::get('/contests/{id}/rank/now' , 'ContestsController@rank');
+Route::post('/contests/{id}/rank/now' , 'ContestsController@rank');
 
 Route::get('/testPost',function(){
     $csrf_token = csrf_token();

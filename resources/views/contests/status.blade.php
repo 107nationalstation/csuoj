@@ -15,7 +15,7 @@
         <div id="content">
         <ul>
             {{$status->links()}}
-                <form  class="" id="status_filter" method="GET" action="{{ url("/contests/".$contest->id) }}">
+                <form  class="" id="status_filter" method="GET" action="{{ url("/contests/".$contest->id."/status/now") }}">
                     <table class="table table-striped  table-responsive">
                     <thead>
                         <th style="width:6%">
