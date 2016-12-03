@@ -1,0 +1,3 @@
+Main.cpp:1:1: error: ‘supervisorctl’ does not name a type
+ supervisorctl start laravel-worker:*
+ ^

@@ -14,7 +14,7 @@
         <label>Problem ID</label>
 
         <input class="form-control submit-setting" type="text" placeholder="{{ (($problem_tag)) }}" readonly>
-        <form method="post" action="{{ url('/contests/submit') }}">
+        <form method="post" action="{{ url('/contest/submit') }}">
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <input type="hidden" name="problem_id" value="{{ $problem->id }}">
             <input type="hidden" name="contest_id" value="{{ $contest->id }}">

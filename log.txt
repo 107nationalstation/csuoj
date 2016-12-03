@@ -269,3 +269,7 @@ DEBUG [2016-12-02 12:59:47] [test.cpp:66]--->result: 6, 2020KB 0ms
 DEBUG [2016-12-02 13:00:03] [test.cpp:66]--->result: 2, 2020KB 0ms
 DEBUG [2016-12-02 13:13:13] [test.cpp:66]--->result: 2, 2020KB 0ms
 DEBUG [2016-12-02 13:52:05] [test.cpp:66]--->result: 8, 0KB 0ms
+DEBUG [2016-12-02 22:42:57] [test.cpp:66]--->result: 2, 2020KB 0ms
+DEBUG [2016-12-02 23:05:34] [test.cpp:66]--->result: 8, 0KB 0ms
+DEBUG [2016-12-02 23:05:40] [test.cpp:66]--->result: 8, 0KB 0ms
+DEBUG [2016-12-02 23:11:49] [test.cpp:66]--->result: 8, 0KB 0ms

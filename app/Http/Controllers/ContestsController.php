@@ -49,6 +49,7 @@ class ContestsController extends Controller
                     if($cstatu->statue == "Accepted") $accepted[$index]++;
                 }
             }
+            $index ++;
         }
     	return view('contests.show' , compact('contest' , 'problems' , 'submit' , 'accepted' , 'id'));
     }
@@ -246,9 +247,6 @@ class ContestsController extends Controller
                     $tmp = $users[$j + 1];
                     $users[$j + 1] = $users[$j];
                     $users[$j] = $tmp;
-                    $tmp = $penalty[$users[$j + 1]];
-                    $penalty[$users[$j + 1]] = $penalty[$users[$j]];
-                    $penalty[$users[$j]] = $tmp;
                 }
                 else if($user_ac[$j] == $user_ac[$j + 1] && $penalty[$users[$j]] > $penalty[$users[$j + 1]]){
                     $tmp = $user_ac[$j + 1];
@@ -257,9 +255,6 @@ class ContestsController extends Controller
                     $tmp = $users[$j + 1];
                     $users[$j + 1] = $users[$j];
                     $users[$j] = $tmp;
-                    $tmp = $penalty[$users[$j + 1]];
-                    $penalty[$users[$j + 1]] = $penalty[$users[$j]];
-                    $penalty[$users[$j]] = $tmp;
                 }
             }
         }
