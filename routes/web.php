@@ -59,6 +59,11 @@ Route::post('/contests/{id}/status/now' , 'ContestsController@status');
 Route::get('/contests/{id}/rank/now' , 'ContestsController@rank');
 Route::post('/contests/{id}/rank/now' , 'ContestsController@rank');
 
+//paste
+Route::get('/paste' , 'PasteController@index');
+Route::post('/paste' , 'PasteController@upload');
+Route::get('/paste/{id}' , 'PasteController@show');
+
 Route::get('/testPost',function(){
     $csrf_token = csrf_token();
     $form = <<<FORM

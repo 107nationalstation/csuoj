@@ -23,6 +23,7 @@ return array(
     'CreateFailedJobsTable' => $baseDir . '/database/migrations/2016_11_28_015351_create_failed_jobs_table.php',
     'CreateJobsTable' => $baseDir . '/database/migrations/2016_11_24_165358_create_jobs_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
+    'CreatePastesTable' => $baseDir . '/database/migrations/2016_12_03_175235_create_pastes_table.php',
     'CreateProblemTable' => $baseDir . '/database/migrations/2016_11_06_133253_create_problem_table.php',
     'CreateProblemUserTable' => $baseDir . '/database/migrations/2016_11_18_174323_create_problem_user_table.php',
     'CreateStatueTable' => $baseDir . '/database/migrations/2016_11_17_164308_create_statue_table.php',

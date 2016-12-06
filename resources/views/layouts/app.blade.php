@@ -74,14 +74,10 @@
                 </div>
             </div>
 
-            <div class="container" class="navbar-header">
+            <div class="container">
 
                 <div>
 
-                    <!-- Collapsed Hamburger -->
-
-
-                    <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/problems') }}">
                         <h2>ProblemSet<h2>
                     </a>
@@ -89,10 +85,7 @@
 
                 <div>
 
-                    <!-- Collapsed Hamburger -->
 
-
-                    <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/status') }}">
                         <h2>Status<h2>
                     </a>
@@ -100,25 +93,29 @@
 
                 <div>
 
-                    <!-- Collapsed Hamburger -->
 
-
-                    <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/rank') }}">
                         <h2>Ranklist<h2>
                     </a>
                 </div>
 
+
                 <div class="navbar-header">
 
-                    <!-- Collapsed Hamburger -->
 
-
-                    <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/contests') }}">
                         <h2>Contest<h2>
                     </a>
                 </div>
+
+                <div class="navbar-header">
+
+
+                    <a class="navbar-brand" href="{{ url('/paste') }}">
+                        <h2>Pastebin<h2>
+                    </a>
+                </div>
+
 
             </div>
         </nav>
